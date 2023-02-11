@@ -2,13 +2,14 @@ package com.driver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.List;
 
 @Service
-
 public class OrderService {
     @Autowired
-    OrderRepository orderRepository;
+    OrderRepository orderRepository = new OrderRepository();
+
     public void addOrder(Order order) {
         orderRepository.addOrder(order);
     }
@@ -53,11 +54,11 @@ public class OrderService {
         return orderRepository.getLastDeliveryTimeByPartnerId(partnerId);
     }
 
-    public void deletePartnerById(String partnerId) {
-        orderRepository.deletePartnerById(partnerId);
+    public void deletePartner(String partnerId) {
+        orderRepository.deletePartner(partnerId);
     }
 
     public void deleteOrder(String orderId) {
-        orderRepository.deleteOrderById(orderId);
+        orderRepository.deleteOrder(orderId);
     }
 }
